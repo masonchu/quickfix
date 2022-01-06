@@ -1,10 +1,10 @@
 package testrequest
 
 import (
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix40"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix40"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // TestRequest is the fix40 TestRequest type, MsgType = 1.

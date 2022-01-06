@@ -1,11 +1,11 @@
 package marketdatarequestreject
 
 import (
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix43"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix43"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // MarketDataRequestReject is the fix43 MarketDataRequestReject type, MsgType = Y.

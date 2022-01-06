@@ -1,10 +1,10 @@
 package logout
 
 import (
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix44"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix44"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // Logout is the fix44 Logout type, MsgType = 5.

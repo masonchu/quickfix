@@ -1,11 +1,11 @@
 package logon
 
 import (
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix41"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix41"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // Logon is the fix41 Logon type, MsgType = A.

@@ -3,11 +3,11 @@ package confirmationack
 import (
 	"time"
 
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix44"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix44"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // ConfirmationAck is the fix44 ConfirmationAck type, MsgType = AU.

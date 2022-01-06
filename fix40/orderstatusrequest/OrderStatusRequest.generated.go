@@ -1,11 +1,11 @@
 package orderstatusrequest
 
 import (
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix40"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix40"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // OrderStatusRequest is the fix40 OrderStatusRequest type, MsgType = H.

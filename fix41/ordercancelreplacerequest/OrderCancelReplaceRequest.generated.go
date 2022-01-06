@@ -4,11 +4,11 @@ import (
 	"github.com/shopspring/decimal"
 	"time"
 
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix41"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix41"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // OrderCancelReplaceRequest is the fix41 OrderCancelReplaceRequest type, MsgType = G.

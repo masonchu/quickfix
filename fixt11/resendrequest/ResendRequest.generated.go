@@ -1,10 +1,10 @@
 package resendrequest
 
 import (
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fixt11"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fixt11"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // ResendRequest is the fixt11 ResendRequest type, MsgType = 2.

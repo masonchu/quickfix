@@ -3,10 +3,10 @@ package listexecute
 import (
 	"time"
 
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix44"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix44"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // ListExecute is the fix44 ListExecute type, MsgType = L.

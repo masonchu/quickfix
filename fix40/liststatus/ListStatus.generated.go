@@ -3,10 +3,10 @@ package liststatus
 import (
 	"github.com/shopspring/decimal"
 
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix40"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix40"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // ListStatus is the fix40 ListStatus type, MsgType = N.

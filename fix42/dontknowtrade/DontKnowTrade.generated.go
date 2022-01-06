@@ -3,11 +3,11 @@ package dontknowtrade
 import (
 	"github.com/shopspring/decimal"
 
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix42"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix42"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // DontKnowTrade is the fix42 DontKnowTrade type, MsgType = Q.

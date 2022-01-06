@@ -3,11 +3,11 @@ package ordermassstatusrequest
 import (
 	"github.com/shopspring/decimal"
 
-	"github.com/quickfixgo/enum"
-	"github.com/quickfixgo/field"
-	"github.com/quickfixgo/fix43"
+	"github.com/masonchu/quickfix/enum"
+	"github.com/masonchu/quickfix/field"
+	"github.com/masonchu/quickfix/fix43"
+	"github.com/masonchu/quickfix/tag"
 	"github.com/quickfixgo/quickfix"
-	"github.com/quickfixgo/tag"
 )
 
 // OrderMassStatusRequest is the fix43 OrderMassStatusRequest type, MsgType = AF.
