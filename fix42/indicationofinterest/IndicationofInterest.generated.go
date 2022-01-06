@@ -1,14 +1,15 @@
 package indicationofinterest
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // IndicationofInterest is the fix42 IndicationofInterest type, MsgType = 6.
@@ -133,7 +134,7 @@ func (m IndicationofInterest) SetValidUntilTime(v time.Time) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m IndicationofInterest) SetSymbolSfx(v enum.SymbolSfx) {
+func (m IndicationofInterest) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -379,7 +380,7 @@ func (m IndicationofInterest) GetValidUntilTime() (v time.Time, err quickfix.Mes
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m IndicationofInterest) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m IndicationofInterest) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

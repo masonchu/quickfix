@@ -1,14 +1,15 @@
 package newordersingle
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // NewOrderSingle is the fix42 NewOrderSingle type, MsgType = D.
@@ -169,7 +170,7 @@ func (m NewOrderSingle) SetFutSettDate(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m NewOrderSingle) SetSymbolSfx(v enum.SymbolSfx) {
+func (m NewOrderSingle) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -199,7 +200,7 @@ func (m NewOrderSingle) SetStopPx(value decimal.Decimal, scale int32) {
 }
 
 // SetExDestination sets ExDestination, Tag 100.
-func (m NewOrderSingle) SetExDestination(v enum.ExDestination) {
+func (m NewOrderSingle) SetExDestination(v string) {
 	m.Set(field.NewExDestination(v))
 }
 
@@ -608,7 +609,7 @@ func (m NewOrderSingle) GetFutSettDate() (v string, err quickfix.MessageRejectEr
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m NewOrderSingle) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m NewOrderSingle) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -660,7 +661,7 @@ func (m NewOrderSingle) GetStopPx() (v decimal.Decimal, err quickfix.MessageReje
 }
 
 // GetExDestination gets ExDestination, Tag 100.
-func (m NewOrderSingle) GetExDestination() (v enum.ExDestination, err quickfix.MessageRejectError) {
+func (m NewOrderSingle) GetExDestination() (v string, err quickfix.MessageRejectError) {
 	var f field.ExDestinationField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -1480,12 +1481,12 @@ type NoTradingSessions struct {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoTradingSessions) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoTradingSessions) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoTradingSessions) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoTradingSessions) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

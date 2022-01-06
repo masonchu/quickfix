@@ -1,11 +1,11 @@
 package tradingsessionstatusrequest
 
 import (
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // TradingSessionStatusRequest is the fix42 TradingSessionStatusRequest type, MsgType = g.
@@ -67,7 +67,7 @@ func (m TradingSessionStatusRequest) SetTradSesReqID(v string) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m TradingSessionStatusRequest) SetTradingSessionID(v enum.TradingSessionID) {
+func (m TradingSessionStatusRequest) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -100,7 +100,7 @@ func (m TradingSessionStatusRequest) GetTradSesReqID() (v string, err quickfix.M
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m TradingSessionStatusRequest) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m TradingSessionStatusRequest) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

@@ -3,11 +3,11 @@ package bidresponse
 import (
 	"github.com/shopspring/decimal"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // BidResponse is the fix42 BidResponse type, MsgType = l.
@@ -172,7 +172,7 @@ func (m NoBidComponents) SetFutSettDate(v string) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoBidComponents) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoBidComponents) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -291,7 +291,7 @@ func (m NoBidComponents) GetFutSettDate() (v string, err quickfix.MessageRejectE
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoBidComponents) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoBidComponents) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

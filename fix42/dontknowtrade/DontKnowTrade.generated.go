@@ -3,11 +3,11 @@ package dontknowtrade
 import (
 	"github.com/shopspring/decimal"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // DontKnowTrade is the fix42 DontKnowTrade type, MsgType = Q.
@@ -112,7 +112,7 @@ func (m DontKnowTrade) SetText(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m DontKnowTrade) SetSymbolSfx(v enum.SymbolSfx) {
+func (m DontKnowTrade) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -302,7 +302,7 @@ func (m DontKnowTrade) GetText() (v string, err quickfix.MessageRejectError) {
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m DontKnowTrade) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m DontKnowTrade) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

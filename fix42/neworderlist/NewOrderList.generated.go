@@ -1,14 +1,15 @@
 package neworderlist
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // NewOrderList is the fix42 NewOrderList type, MsgType = E.
@@ -101,7 +102,7 @@ func (m NewOrderList) SetClientBidID(v string) {
 }
 
 // SetBidType sets BidType, Tag 394.
-func (m NewOrderList) SetBidType(v enum.BidType) {
+func (m NewOrderList) SetBidType(v int) {
 	m.Set(field.NewBidType(v))
 }
 
@@ -191,7 +192,7 @@ func (m NewOrderList) GetClientBidID() (v string, err quickfix.MessageRejectErro
 }
 
 // GetBidType gets BidType, Tag 394.
-func (m NewOrderList) GetBidType() (v enum.BidType, err quickfix.MessageRejectError) {
+func (m NewOrderList) GetBidType() (v int, err quickfix.MessageRejectError) {
 	var f field.BidTypeField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -357,7 +358,7 @@ func (m NoOrders) SetMaxFloor(value decimal.Decimal, scale int32) {
 }
 
 // SetExDestination sets ExDestination, Tag 100.
-func (m NoOrders) SetExDestination(v enum.ExDestination) {
+func (m NoOrders) SetExDestination(v string) {
 	m.Set(field.NewExDestination(v))
 }
 
@@ -377,7 +378,7 @@ func (m NoOrders) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m NoOrders) SetSymbolSfx(v enum.SymbolSfx) {
+func (m NoOrders) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -477,7 +478,7 @@ func (m NoOrders) SetSide(v enum.Side) {
 }
 
 // SetSideValueInd sets SideValueInd, Tag 401.
-func (m NoOrders) SetSideValueInd(v enum.SideValueInd) {
+func (m NoOrders) SetSideValueInd(v int) {
 	m.Set(field.NewSideValueInd(v))
 }
 
@@ -777,7 +778,7 @@ func (m NoOrders) GetMaxFloor() (v decimal.Decimal, err quickfix.MessageRejectEr
 }
 
 // GetExDestination gets ExDestination, Tag 100.
-func (m NoOrders) GetExDestination() (v enum.ExDestination, err quickfix.MessageRejectError) {
+func (m NoOrders) GetExDestination() (v string, err quickfix.MessageRejectError) {
 	var f field.ExDestinationField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -811,7 +812,7 @@ func (m NoOrders) GetSymbol() (v string, err quickfix.MessageRejectError) {
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m NoOrders) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m NoOrders) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -991,7 +992,7 @@ func (m NoOrders) GetSide() (v enum.Side, err quickfix.MessageRejectError) {
 }
 
 // GetSideValueInd gets SideValueInd, Tag 401.
-func (m NoOrders) GetSideValueInd() (v enum.SideValueInd, err quickfix.MessageRejectError) {
+func (m NoOrders) GetSideValueInd() (v int, err quickfix.MessageRejectError) {
 	var f field.SideValueIndField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -1765,12 +1766,12 @@ type NoTradingSessions struct {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoTradingSessions) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoTradingSessions) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoTradingSessions) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoTradingSessions) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

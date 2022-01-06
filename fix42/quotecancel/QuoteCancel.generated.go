@@ -3,11 +3,11 @@ package quotecancel
 import (
 	"github.com/shopspring/decimal"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // QuoteCancel is the fix42 QuoteCancel type, MsgType = Z.
@@ -84,7 +84,7 @@ func (m QuoteCancel) SetQuoteResponseLevel(v enum.QuoteResponseLevel) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m QuoteCancel) SetTradingSessionID(v enum.TradingSessionID) {
+func (m QuoteCancel) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -132,7 +132,7 @@ func (m QuoteCancel) GetQuoteResponseLevel() (v enum.QuoteResponseLevel, err qui
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m QuoteCancel) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m QuoteCancel) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -181,7 +181,7 @@ func (m NoQuoteEntries) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m NoQuoteEntries) SetSymbolSfx(v enum.SymbolSfx) {
+func (m NoQuoteEntries) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -285,7 +285,7 @@ func (m NoQuoteEntries) GetSymbol() (v string, err quickfix.MessageRejectError) 
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m NoQuoteEntries) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m NoQuoteEntries) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

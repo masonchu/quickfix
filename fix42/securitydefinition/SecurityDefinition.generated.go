@@ -3,11 +3,11 @@ package securitydefinition
 import (
 	"github.com/shopspring/decimal"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // SecurityDefinition is the fix42 SecurityDefinition type, MsgType = d.
@@ -85,7 +85,7 @@ func (m SecurityDefinition) SetText(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m SecurityDefinition) SetSymbolSfx(v enum.SymbolSfx) {
+func (m SecurityDefinition) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -165,7 +165,7 @@ func (m SecurityDefinition) SetSecurityResponseType(v enum.SecurityResponseType)
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m SecurityDefinition) SetTradingSessionID(v enum.TradingSessionID) {
+func (m SecurityDefinition) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -250,7 +250,7 @@ func (m SecurityDefinition) GetText() (v string, err quickfix.MessageRejectError
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m SecurityDefinition) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m SecurityDefinition) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -392,7 +392,7 @@ func (m SecurityDefinition) GetSecurityResponseType() (v enum.SecurityResponseTy
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m SecurityDefinition) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m SecurityDefinition) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

@@ -3,11 +3,11 @@ package ordercancelreject
 import (
 	"time"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // OrderCancelReject is the fix42 OrderCancelReject type, MsgType = 9.

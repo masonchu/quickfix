@@ -3,11 +3,11 @@ package orderstatusrequest
 import (
 	"github.com/shopspring/decimal"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // OrderStatusRequest is the fix42 OrderStatusRequest type, MsgType = H.
@@ -95,7 +95,7 @@ func (m OrderStatusRequest) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m OrderStatusRequest) SetSymbolSfx(v enum.SymbolSfx) {
+func (m OrderStatusRequest) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -248,7 +248,7 @@ func (m OrderStatusRequest) GetSymbol() (v string, err quickfix.MessageRejectErr
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m OrderStatusRequest) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m OrderStatusRequest) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

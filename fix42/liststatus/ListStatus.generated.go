@@ -1,14 +1,15 @@
 package liststatus
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // ListStatus is the fix42 ListStatus type, MsgType = N.
@@ -94,12 +95,12 @@ func (m ListStatus) SetRptSeq(v int) {
 }
 
 // SetListStatusType sets ListStatusType, Tag 429.
-func (m ListStatus) SetListStatusType(v enum.ListStatusType) {
+func (m ListStatus) SetListStatusType(v int) {
 	m.Set(field.NewListStatusType(v))
 }
 
 // SetListOrderStatus sets ListOrderStatus, Tag 431.
-func (m ListStatus) SetListOrderStatus(v enum.ListOrderStatus) {
+func (m ListStatus) SetListOrderStatus(v int) {
 	m.Set(field.NewListOrderStatus(v))
 }
 
@@ -171,7 +172,7 @@ func (m ListStatus) GetRptSeq() (v int, err quickfix.MessageRejectError) {
 }
 
 // GetListStatusType gets ListStatusType, Tag 429.
-func (m ListStatus) GetListStatusType() (v enum.ListStatusType, err quickfix.MessageRejectError) {
+func (m ListStatus) GetListStatusType() (v int, err quickfix.MessageRejectError) {
 	var f field.ListStatusTypeField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -180,7 +181,7 @@ func (m ListStatus) GetListStatusType() (v enum.ListStatusType, err quickfix.Mes
 }
 
 // GetListOrderStatus gets ListOrderStatus, Tag 431.
-func (m ListStatus) GetListOrderStatus() (v enum.ListOrderStatus, err quickfix.MessageRejectError) {
+func (m ListStatus) GetListOrderStatus() (v int, err quickfix.MessageRejectError) {
 	var f field.ListOrderStatusField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

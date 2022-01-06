@@ -1,14 +1,15 @@
 package news
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // News is the fix42 News type, MsgType = B.
@@ -357,7 +358,7 @@ func (m NoRelatedSym) SetRelatdSym(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m NoRelatedSym) SetSymbolSfx(v enum.SymbolSfx) {
+func (m NoRelatedSym) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -456,7 +457,7 @@ func (m NoRelatedSym) GetRelatdSym() (v string, err quickfix.MessageRejectError)
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m NoRelatedSym) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m NoRelatedSym) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

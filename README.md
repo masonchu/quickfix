@@ -1,6 +1,6 @@
 # QuickFIX/Go
 
-[![Build Status](https://github.com/masonchu/quickfix/workflows/CI/badge.svg)](https://github.com/masonchu/quickfix/actions) [![GoDoc](https://godoc.org/github.com/quickfixgo/quickfix?status.png)](https://godoc.org/github.com/quickfixgo/quickfix) [![Go Report Card](https://goreportcard.com/badge/github.com/quickfixgo/quickfix)](https://goreportcard.com/report/github.com/quickfixgo/quickfix)
+[![Build Status](https://github.com/masonchu/quickfix/workflows/CI/badge.svg)](https://github.com/masonchu/quickfix/actions) [![GoDoc](https://godoc.org/github.com/masonchu/quickfix?status.png)](https://godoc.org/github.com/masonchu/quickfix) [![Go Report Card](https://goreportcard.com/badge/github.com/masonchu/quickfix)](https://goreportcard.com/report/github.com/masonchu/quickfix)
 
 - Website: http://www.quickfixgo.org
 - Mailing list: [Google Groups](https://groups.google.com/forum/#!forum/quickfixgo)
@@ -10,19 +10,19 @@ Open Source [FIX Protocol](http://www.fixprotocol.org/) library implemented in G
 ## Getting Started and Documentation
 
 - [User Manual](http://quickfixgo.org/docs)
-- [API Documentation](https://godoc.org/github.com/quickfixgo/quickfix)
+- [API Documentation](https://godoc.org/github.com/masonchu/quickfix)
 
 ### Installation
 
 To install QuickFIX/Go, use `go get`:
 
 ```sh
-$ go get github.com/quickfixgo/quickfix
+$ go get github.com/masonchu/quickfix
 ```
 
 ### Staying up to date
 
-To update QuickFIX/Go to the latest version, use `go get -u github.com/quickfixgo/quickfix`.
+To update QuickFIX/Go to the latest version, use `go get -u github.com/masonchu/quickfix`.
 
 ### Example Apps
 

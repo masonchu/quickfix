@@ -1,14 +1,15 @@
 package allocation
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // Allocation is the fix42 Allocation type, MsgType = J.
@@ -125,7 +126,7 @@ func (m Allocation) SetFutSettDate(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m Allocation) SetSymbolSfx(v enum.SymbolSfx) {
+func (m Allocation) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -255,7 +256,7 @@ func (m Allocation) SetContractMultiplier(value decimal.Decimal, scale int32) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m Allocation) SetTradingSessionID(v enum.TradingSessionID) {
+func (m Allocation) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -403,7 +404,7 @@ func (m Allocation) GetFutSettDate() (v string, err quickfix.MessageRejectError)
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m Allocation) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m Allocation) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -631,7 +632,7 @@ func (m Allocation) GetContractMultiplier() (v decimal.Decimal, err quickfix.Mes
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m Allocation) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m Allocation) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

@@ -1,9 +1,9 @@
 package fix42
 
 import (
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // Trailer is the fix42 Trailer type.

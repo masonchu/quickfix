@@ -3,11 +3,11 @@ package settlementinstructions
 import (
 	"time"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // SettlementInstructions is the fix42 SettlementInstructions type, MsgType = T.
@@ -154,7 +154,7 @@ func (m SettlementInstructions) SetStandInstDbID(v string) {
 }
 
 // SetSettlDeliveryType sets SettlDeliveryType, Tag 172.
-func (m SettlementInstructions) SetSettlDeliveryType(v enum.SettlDeliveryType) {
+func (m SettlementInstructions) SetSettlDeliveryType(v int) {
 	m.Set(field.NewSettlDeliveryType(v))
 }
 
@@ -239,7 +239,7 @@ func (m SettlementInstructions) SetSettlInstRefID(v string) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m SettlementInstructions) SetTradingSessionID(v enum.TradingSessionID) {
+func (m SettlementInstructions) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -406,7 +406,7 @@ func (m SettlementInstructions) GetStandInstDbID() (v string, err quickfix.Messa
 }
 
 // GetSettlDeliveryType gets SettlDeliveryType, Tag 172.
-func (m SettlementInstructions) GetSettlDeliveryType() (v enum.SettlDeliveryType, err quickfix.MessageRejectError) {
+func (m SettlementInstructions) GetSettlDeliveryType() (v int, err quickfix.MessageRejectError) {
 	var f field.SettlDeliveryTypeField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -559,7 +559,7 @@ func (m SettlementInstructions) GetSettlInstRefID() (v string, err quickfix.Mess
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m SettlementInstructions) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m SettlementInstructions) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

@@ -1,10 +1,10 @@
 package heartbeat
 
 import (
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // Heartbeat is the fix42 Heartbeat type, MsgType = 0.

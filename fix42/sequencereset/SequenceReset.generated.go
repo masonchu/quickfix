@@ -1,10 +1,10 @@
 package sequencereset
 
 import (
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // SequenceReset is the fix42 SequenceReset type, MsgType = 4.

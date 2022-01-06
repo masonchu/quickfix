@@ -8,7 +8,6 @@ require (
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/mattn/go-sqlite3 v1.14.10
 	github.com/pkg/errors v0.9.1
-	github.com/quickfixgo/quickfix v0.6.0
 	github.com/rogpeppe/go-internal v1.8.1 // indirect
 	github.com/shopspring/decimal v1.3.1
 	github.com/stretchr/objx v0.3.0 // indirect

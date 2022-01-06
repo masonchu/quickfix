@@ -3,11 +3,11 @@ package quotestatusrequest
 import (
 	"github.com/shopspring/decimal"
 
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // QuoteStatusRequest is the fix42 QuoteStatusRequest type, MsgType = a.
@@ -78,7 +78,7 @@ func (m QuoteStatusRequest) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m QuoteStatusRequest) SetSymbolSfx(v enum.SymbolSfx) {
+func (m QuoteStatusRequest) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -143,7 +143,7 @@ func (m QuoteStatusRequest) SetContractMultiplier(value decimal.Decimal, scale i
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m QuoteStatusRequest) SetTradingSessionID(v enum.TradingSessionID) {
+func (m QuoteStatusRequest) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -204,7 +204,7 @@ func (m QuoteStatusRequest) GetSymbol() (v string, err quickfix.MessageRejectErr
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m QuoteStatusRequest) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m QuoteStatusRequest) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -321,7 +321,7 @@ func (m QuoteStatusRequest) GetContractMultiplier() (v decimal.Decimal, err quic
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m QuoteStatusRequest) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m QuoteStatusRequest) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

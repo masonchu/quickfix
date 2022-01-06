@@ -1,14 +1,15 @@
 package quoterequest
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // QuoteRequest is the fix42 QuoteRequest type, MsgType = R.
@@ -105,7 +106,7 @@ func (m NoRelatedSym) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m NoRelatedSym) SetSymbolSfx(v enum.SymbolSfx) {
+func (m NoRelatedSym) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -205,7 +206,7 @@ func (m NoRelatedSym) SetQuoteRequestType(v enum.QuoteRequestType) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoRelatedSym) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoRelatedSym) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -264,7 +265,7 @@ func (m NoRelatedSym) GetSymbol() (v string, err quickfix.MessageRejectError) {
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m NoRelatedSym) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m NoRelatedSym) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -444,7 +445,7 @@ func (m NoRelatedSym) GetQuoteRequestType() (v enum.QuoteRequestType, err quickf
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoRelatedSym) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoRelatedSym) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

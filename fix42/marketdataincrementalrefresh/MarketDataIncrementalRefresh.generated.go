@@ -1,14 +1,15 @@
 package marketdataincrementalrefresh
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // MarketDataIncrementalRefresh is the fix42 MarketDataIncrementalRefresh type, MsgType = X.
@@ -129,7 +130,7 @@ func (m NoMDEntries) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m NoMDEntries) SetSymbolSfx(v enum.SymbolSfx) {
+func (m NoMDEntries) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -264,7 +265,7 @@ func (m NoMDEntries) SetMDMkt(v string) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoMDEntries) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoMDEntries) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -433,7 +434,7 @@ func (m NoMDEntries) GetSymbol() (v string, err quickfix.MessageRejectError) {
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m NoMDEntries) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m NoMDEntries) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -676,7 +677,7 @@ func (m NoMDEntries) GetMDMkt() (v string, err quickfix.MessageRejectError) {
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoMDEntries) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoMDEntries) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

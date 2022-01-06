@@ -1,14 +1,15 @@
 package executionreport
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // ExecutionReport is the fix42 ExecutionReport type, MsgType = 8.
@@ -228,7 +229,7 @@ func (m ExecutionReport) SetFutSettDate(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m ExecutionReport) SetSymbolSfx(v enum.SymbolSfx) {
+func (m ExecutionReport) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -418,7 +419,7 @@ func (m ExecutionReport) SetContractMultiplier(value decimal.Decimal, scale int3
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m ExecutionReport) SetTradingSessionID(v enum.TradingSessionID) {
+func (m ExecutionReport) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -816,7 +817,7 @@ func (m ExecutionReport) GetFutSettDate() (v string, err quickfix.MessageRejectE
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m ExecutionReport) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m ExecutionReport) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -1158,7 +1159,7 @@ func (m ExecutionReport) GetContractMultiplier() (v decimal.Decimal, err quickfi
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m ExecutionReport) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m ExecutionReport) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

@@ -1,14 +1,15 @@
 package bidrequest
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // BidRequest is the fix42 BidRequest type, MsgType = k.
@@ -119,7 +120,7 @@ func (m BidRequest) SetTotalNumSecurities(v int) {
 }
 
 // SetBidType sets BidType, Tag 394.
-func (m BidRequest) SetBidType(v enum.BidType) {
+func (m BidRequest) SetBidType(v int) {
 	m.Set(field.NewBidType(v))
 }
 
@@ -308,7 +309,7 @@ func (m BidRequest) GetTotalNumSecurities() (v int, err quickfix.MessageRejectEr
 }
 
 // GetBidType gets BidType, Tag 394.
-func (m BidRequest) GetBidType() (v enum.BidType, err quickfix.MessageRejectError) {
+func (m BidRequest) GetBidType() (v int, err quickfix.MessageRejectError) {
 	var f field.BidTypeField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -616,7 +617,7 @@ type NoBidDescriptors struct {
 }
 
 // SetBidDescriptorType sets BidDescriptorType, Tag 399.
-func (m NoBidDescriptors) SetBidDescriptorType(v enum.BidDescriptorType) {
+func (m NoBidDescriptors) SetBidDescriptorType(v int) {
 	m.Set(field.NewBidDescriptorType(v))
 }
 
@@ -626,7 +627,7 @@ func (m NoBidDescriptors) SetBidDescriptor(v string) {
 }
 
 // SetSideValueInd sets SideValueInd, Tag 401.
-func (m NoBidDescriptors) SetSideValueInd(v enum.SideValueInd) {
+func (m NoBidDescriptors) SetSideValueInd(v int) {
 	m.Set(field.NewSideValueInd(v))
 }
 
@@ -671,7 +672,7 @@ func (m NoBidDescriptors) SetValueOfFutures(value decimal.Decimal, scale int32) 
 }
 
 // GetBidDescriptorType gets BidDescriptorType, Tag 399.
-func (m NoBidDescriptors) GetBidDescriptorType() (v enum.BidDescriptorType, err quickfix.MessageRejectError) {
+func (m NoBidDescriptors) GetBidDescriptorType() (v int, err quickfix.MessageRejectError) {
 	var f field.BidDescriptorTypeField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -689,7 +690,7 @@ func (m NoBidDescriptors) GetBidDescriptor() (v string, err quickfix.MessageReje
 }
 
 // GetSideValueInd gets SideValueInd, Tag 401.
-func (m NoBidDescriptors) GetSideValueInd() (v enum.SideValueInd, err quickfix.MessageRejectError) {
+func (m NoBidDescriptors) GetSideValueInd() (v int, err quickfix.MessageRejectError) {
 	var f field.SideValueIndField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -863,7 +864,7 @@ func (m NoBidComponents) SetSide(v enum.Side) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoBidComponents) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoBidComponents) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -906,7 +907,7 @@ func (m NoBidComponents) GetSide() (v enum.Side, err quickfix.MessageRejectError
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoBidComponents) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoBidComponents) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

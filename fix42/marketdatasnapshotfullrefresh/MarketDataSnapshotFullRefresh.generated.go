@@ -1,14 +1,15 @@
 package marketdatasnapshotfullrefresh
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // MarketDataSnapshotFullRefresh is the fix42 MarketDataSnapshotFullRefresh type, MsgType = W.
@@ -74,7 +75,7 @@ func (m MarketDataSnapshotFullRefresh) SetSymbol(v string) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m MarketDataSnapshotFullRefresh) SetSymbolSfx(v enum.SymbolSfx) {
+func (m MarketDataSnapshotFullRefresh) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -206,7 +207,7 @@ func (m MarketDataSnapshotFullRefresh) GetSymbol() (v string, err quickfix.Messa
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m MarketDataSnapshotFullRefresh) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m MarketDataSnapshotFullRefresh) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
@@ -558,7 +559,7 @@ func (m NoMDEntries) SetMDMkt(v string) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m NoMDEntries) SetTradingSessionID(v enum.TradingSessionID) {
+func (m NoMDEntries) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -740,7 +741,7 @@ func (m NoMDEntries) GetMDMkt() (v string, err quickfix.MessageRejectError) {
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m NoMDEntries) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m NoMDEntries) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

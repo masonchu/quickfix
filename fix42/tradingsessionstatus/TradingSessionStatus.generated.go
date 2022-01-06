@@ -1,14 +1,15 @@
 package tradingsessionstatus
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // TradingSessionStatus is the fix42 TradingSessionStatus type, MsgType = h.
@@ -75,7 +76,7 @@ func (m TradingSessionStatus) SetTradSesReqID(v string) {
 }
 
 // SetTradingSessionID sets TradingSessionID, Tag 336.
-func (m TradingSessionStatus) SetTradingSessionID(v enum.TradingSessionID) {
+func (m TradingSessionStatus) SetTradingSessionID(v string) {
 	m.Set(field.NewTradingSessionID(v))
 }
 
@@ -162,7 +163,7 @@ func (m TradingSessionStatus) GetTradSesReqID() (v string, err quickfix.MessageR
 }
 
 // GetTradingSessionID gets TradingSessionID, Tag 336.
-func (m TradingSessionStatus) GetTradingSessionID() (v enum.TradingSessionID, err quickfix.MessageRejectError) {
+func (m TradingSessionStatus) GetTradingSessionID() (v string, err quickfix.MessageRejectError) {
 	var f field.TradingSessionIDField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()

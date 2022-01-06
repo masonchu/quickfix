@@ -1,14 +1,15 @@
 package ordercancelrequest
 
 import (
-	"github.com/shopspring/decimal"
 	"time"
 
+	"github.com/shopspring/decimal"
+
+	"github.com/masonchu/quickfix"
 	"github.com/masonchu/quickfix/enum"
 	"github.com/masonchu/quickfix/field"
 	"github.com/masonchu/quickfix/fix42"
 	"github.com/masonchu/quickfix/tag"
-	"github.com/quickfixgo/quickfix"
 )
 
 // OrderCancelRequest is the fix42 OrderCancelRequest type, MsgType = F.
@@ -118,7 +119,7 @@ func (m OrderCancelRequest) SetTransactTime(v time.Time) {
 }
 
 // SetSymbolSfx sets SymbolSfx, Tag 65.
-func (m OrderCancelRequest) SetSymbolSfx(v enum.SymbolSfx) {
+func (m OrderCancelRequest) SetSymbolSfx(v string) {
 	m.Set(field.NewSymbolSfx(v))
 }
 
@@ -337,7 +338,7 @@ func (m OrderCancelRequest) GetTransactTime() (v time.Time, err quickfix.Message
 }
 
 // GetSymbolSfx gets SymbolSfx, Tag 65.
-func (m OrderCancelRequest) GetSymbolSfx() (v enum.SymbolSfx, err quickfix.MessageRejectError) {
+func (m OrderCancelRequest) GetSymbolSfx() (v string, err quickfix.MessageRejectError) {
 	var f field.SymbolSfxField
 	if err = m.Get(&f); err == nil {
 		v = f.Value()
