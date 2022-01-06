@@ -6,8 +6,8 @@ import (
 
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
+	"github.com/masonchu/quickfix/config"
 	"github.com/pkg/errors"
-	"github.com/quickfixgo/quickfix/config"
 )
 
 type mongoStoreFactory struct {

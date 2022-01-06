@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/quickfixgo/quickfix/config"
-	"github.com/quickfixgo/quickfix/datadictionary"
-	"github.com/quickfixgo/quickfix/internal"
+	"github.com/masonchu/quickfix/config"
+	"github.com/masonchu/quickfix/datadictionary"
+	"github.com/masonchu/quickfix/internal"
 )
 
 var dayLookup = map[string]time.Weekday{
@@ -404,7 +404,7 @@ func (f sessionFactory) buildHeartBtIntSettings(session *session, settings *Sess
 			return
 		}
 	}
-	
+
 	if session.HeartBtIntOverride || mustProvide {
 		var heartBtInt int
 		if heartBtInt, err = settings.IntSetting(config.HeartBtInt); err != nil {
