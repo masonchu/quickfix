@@ -95,11 +95,11 @@ func (s *session) waitForInSessionTime() {
 func (s *session) insertSendingTime(msg *Message) {
 	sendingTime := time.Now().UTC()
 
-	if s.sessionID.BeginString >= BeginStringFIX42 {
-		msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: s.timestampPrecision})
-	} else {
-		msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: Seconds})
-	}
+	// if s.sessionID.BeginString >= BeginStringFIX42 {
+	// 	msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: s.timestampPrecision})
+	// } else {
+	msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: Seconds})
+	// }
 }
 
 func optionallySetID(msg *Message, field Tag, value string) {
