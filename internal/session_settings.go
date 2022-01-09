@@ -17,6 +17,7 @@ type SessionSettings struct {
 	SkipCheckLatency             bool
 	MaxLatency                   time.Duration
 	DisableMessagePersist        bool
+	ApiSecret                    string
 
 	//required on logon for FIX.T.1 messages
 	DefaultApplVerID string

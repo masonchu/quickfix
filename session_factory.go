@@ -282,6 +282,14 @@ func (f sessionFactory) newSession(
 		s.DisableMessagePersist = !persistMessages
 	}
 
+	if settings.HasSetting(config.ApiSecret) {
+		apiSecret, err := settings.Setting(config.ApiSecret)
+		if err != nil {
+			return s, err
+		}
+		s.ApiSecret = apiSecret
+	}
+
 	if f.BuildInitiators {
 		if err = f.buildInitiatorSettings(s, settings); err != nil {
 			return

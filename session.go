@@ -2,8 +2,12 @@ package quickfix
 
 import (
 	"bytes"
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"fmt"
+	"strings"
 	"sync"
 	"time"
 
@@ -95,11 +99,11 @@ func (s *session) waitForInSessionTime() {
 func (s *session) insertSendingTime(msg *Message) {
 	sendingTime := time.Now().UTC()
 
-	// if s.sessionID.BeginString >= BeginStringFIX42 {
-	// 	msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: s.timestampPrecision})
-	// } else {
-	msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: Seconds})
-	// }
+	if s.sessionID.BeginString >= BeginStringFIX42 {
+		msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: s.timestampPrecision})
+	} else {
+		msg.Header.SetField(tagSendingTime, FIXUTCTimestamp{Time: sendingTime, Precision: Seconds})
+	}
 }
 
 func optionallySetID(msg *Message, field Tag, value string) {
@@ -120,6 +124,35 @@ func (s *session) fillDefaultHeader(msg *Message, inReplyTo *Message) {
 
 	s.insertSendingTime(msg)
 
+	compTarget, err := msg.Header.GetString(tagTargetCompID)
+	if err != nil {
+		s.logError(err)
+		return
+	}
+	if compTarget == "FTX" {
+		apiKey, err := msg.Header.GetString(tagSenderCompID)
+		if err != nil {
+			s.logError(err)
+			return
+		}
+		sendingTime, err := msg.Header.GetTime(tagSendingTime)
+		if err != nil {
+			s.logError(err)
+			return
+		}
+		signTargets := []string{
+			sendingTime.Format("20060102-15:04:05"),
+			"A",
+			"1",
+			apiKey,
+			"FTX",
+		}
+
+		signTarget := strings.Join(signTargets, string(byte(0x01)))
+		signature := hmac256hex(signTarget, s.ApiSecret)
+		msg.Body.SetString(96, signature)
+		msg.Header.SetString(tagSendingTime, sendingTime.Format("20060102-15:04:05"))
+	}
 	if s.EnableLastMsgSeqNumProcessed {
 		if inReplyTo != nil {
 			if lastSeqNum, err := inReplyTo.Header.GetInt(tagMsgSeqNum); err != nil {
@@ -131,6 +164,12 @@ func (s *session) fillDefaultHeader(msg *Message, inReplyTo *Message) {
 			msg.Header.SetInt(tagLastMsgSeqNumProcessed, s.store.NextTargetMsgSeqNum()-1)
 		}
 	}
+}
+
+func hmac256hex(payload string, secret string) string {
+	sig := hmac.New(sha256.New, []byte(secret))
+	sig.Write([]byte(payload))
+	return hex.EncodeToString(sig.Sum(nil))
 }
 
 func (s *session) shouldSendReset() bool {
@@ -162,7 +201,6 @@ func (s *session) sendLogonInReplyTo(setResetSeqNum bool, inReplyTo *Message) er
 	if len(s.DefaultApplVerID) > 0 {
 		logon.Body.SetField(tagDefaultApplVerID, FIXString(s.DefaultApplVerID))
 	}
-
 	if err := s.dropAndSendInReplyTo(logon, inReplyTo); err != nil {
 		return err
 	}
