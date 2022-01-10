@@ -124,12 +124,17 @@ func (s *session) fillDefaultHeader(msg *Message, inReplyTo *Message) {
 
 	s.insertSendingTime(msg)
 
+	msgType, err := msg.Header.GetString(tagMsgType)
+	if err != nil {
+		s.logError(err)
+		return
+	}
 	compTarget, err := msg.Header.GetString(tagTargetCompID)
 	if err != nil {
 		s.logError(err)
 		return
 	}
-	if compTarget == "FTX" {
+	if msgType == "A" && compTarget == "FTX" {
 		apiKey, err := msg.Header.GetString(tagSenderCompID)
 		if err != nil {
 			s.logError(err)
