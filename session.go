@@ -150,6 +150,7 @@ func (s *session) fillDefaultHeader(msg *Message, inReplyTo *Message) {
 
 		signTarget := strings.Join(signTargets, string(byte(0x01)))
 		signature := hmac256hex(signTarget, s.ApiSecret)
+		msg.Body.SetString(8013, "Y")
 		msg.Body.SetString(96, signature)
 		msg.Header.SetString(tagSendingTime, sendingTime.Format("20060102-15:04:05"))
 	}
